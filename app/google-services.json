@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25607164337",
+    "project_id": "sciflare-task-5a286",
+    "storage_bucket": "sciflare-task-5a286.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25607164337:android:49330e3409384201cc6d90",
+        "android_client_info": {
+          "package_name": "com.sciflare.task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmT5ahL0lbHSguIzHGbcXAJvW2Gu5AtyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

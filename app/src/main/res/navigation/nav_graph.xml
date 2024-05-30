@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.task.ui.components.fragment.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailListFragment"
+            app:destination="@id/subCategoryFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_subCategoryFragment"
+            app:destination="@id/subCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subCategoryFragment"
+        android:name="com.task.ui.components.fragment.subcategory.SubCategoryFragment"
+        tools:layout="@layout/sub_category_fragment">
+        <argument
+            android:name="mainCategoryId"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="mainCategoryTitle"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailListFragment_to_homeFragment2"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_subCategoryFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.task.ui.components.fragment.registration.RegistrationFragment"
+        tools:layout="@layout/registration_fragment">
+        <action
+            android:id="@+id/action_registrationFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_registrationFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.task.ui.components.fragment.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.task.ui.components.fragment.changepassword.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.task.ui.components.fragment.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.task.ui.components.fragment.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.task.ui.components.fragment.video.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.task.ui.components.fragment.more.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" >
+        <action
+            android:id="@+id/action_moreFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.task.ui.components.fragment.more.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

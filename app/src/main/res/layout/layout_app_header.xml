@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/blue"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glTopHomePage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLeftArrowAppHeader"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginLeft="@dimen/_6sdp"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glTopHomePage"
+        app:tint="@color/white" />
+
+    <com.task.utils.font.CustomFontTextViewBold
+        android:id="@+id/tvTitleAppHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:gravity="center"
+        android:padding="@dimen/_8sdp"
+        android:ellipsize="marquee"
+        android:text=""
+        app:autoSizeTextType="uniform"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glTopHomePage" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgCloseAppHeader"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginRight="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glTopHomePage"
+        app:tint="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSettingAppHeader"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginRight="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:src="@drawable/ic_setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/glTopHomePage"
+        app:tint="@color/white" />
+</androidx.constraintlayout.widget.ConstraintLayout>

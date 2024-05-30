@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_1"
+    tools:context=".ui.components.fragment.more.profile.ProfileFragment">
+
+    <include
+        android:id="@+id/inclFp"
+        layout="@layout/layout_app_header" />
+
+    <ProgressBar
+        android:id="@+id/pbFpLoader"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:indeterminateBehavior="cycle"
+        android:indeterminateTint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inclFp" />
+
+
+    <com.task.utils.font.CustomFontEditTextRegular
+        android:id="@+id/edtFpUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/edt_registration_bg"
+        android:hint="@string/your_name"
+        android:imeOptions="actionNext"
+        android:importantForAutofill="no"
+        android:inputType="text|textNoSuggestions|textCapSentences"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintTop_toBottomOf="@+id/pbFpLoader" />
+
+    <com.task.utils.font.CustomFontEditTextRegular
+        android:id="@+id/edtFpMobileNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/edt_registration_bg"
+        android:clickable="false"
+        android:hint="@string/hint_mobile_number"
+        android:imeOptions="actionNext"
+        android:importantForAutofill="no"
+        android:inputType="number|textNoSuggestions"
+        android:maxLength="10"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintTop_toBottomOf="@+id/edtFpUserName" />
+
+    <com.task.utils.font.CustomFontEditTextRegular
+        android:id="@+id/edtFpEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:background="@drawable/edt_registration_bg"
+        android:hint="@string/hint_email_id"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="text|textEmailAddress"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:textColor="@color/grey"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintTop_toBottomOf="@+id/edtFpMobileNo" />
+
+    <com.task.utils.font.CustomFontButtonBold
+        android:id="@+id/btnFpSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@drawable/btn_registration_bg"
+        android:text="@string/update"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_13sdp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/edtFpEmail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
