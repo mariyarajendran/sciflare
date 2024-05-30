@@ -15,6 +15,7 @@ import com.task.data.dto.usersdetails.UserDetailsData
 import com.task.databinding.FragmentUpdateUserDetailsBinding
 import com.task.ui.base.BaseFragment
 import com.task.ui.components.activity.HomeActivity
+import com.task.utils.EnumGender
 import com.task.utils.SingleEvent
 import com.task.utils.showToast
 import com.task.utils.toGone
@@ -26,6 +27,7 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
     private lateinit var profileViewModel: ProfileViewModel
     private val args: UpdateUserDetailsFragmentArgs by navArgs()
     private var userDetailsData = UserDetailsData()
+    private var gender: String? = ""
 
 
     override fun onCreateView(
@@ -41,6 +43,7 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
         onBackPressed()
         observeViewModel()
         bindUserDetails()
+        radioGroupOnClickListener()
     }
 
     override fun initOnClickListener() {
@@ -56,7 +59,7 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
         binding.inclFuudHeader.imgSettingAppHeader.toGone()
         binding.inclFuudHeader.imgCloseAppHeader.toGone()
         binding.inclFuudHeader.tvTitleAppHeader.text =
-            requireActivity().resources.getString(R.string.profile)
+            requireActivity().resources.getString(R.string.update_user_details)
     }
 
     override fun observeViewModel() {
@@ -70,18 +73,52 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
             }
 
             binding.btnFuudSubmit -> {
-                val userDetailsData = UserDetailsData(
-                    _id = userDetailsData._id,
-                    name = binding.edtFuudUserName.text.toString(),
-                    email = binding.edtFuudEmail.text.toString(),
-                    mobile = binding.edtFuudMobileNo.text.toString(),
-                    gender = userDetailsData.gender,
-                )
-                profileViewModel.updateUserDetailData(userDetailsData).apply {
-                    profileViewModel.showToastMessage(requireActivity().resources.getString(R.string.user_details_updated_successfully))
-                    backPressNavigation()
+                if (validateUserData()) {
+                    val userDetailsData = UserDetailsData(
+                        _id = userDetailsData._id,
+                        name = binding.edtFuudUserName.text.toString(),
+                        email = binding.edtFuudEmail.text.toString(),
+                        mobile = binding.edtFuudMobileNo.text.toString(),
+                        gender = gender ?: "",
+                    )
+                    profileViewModel.updateUserDetailData(userDetailsData).apply {
+                        profileViewModel.showToastMessage(requireActivity().resources.getString(R.string.user_details_updated_successfully))
+                        backPressNavigation()
+                    }
                 }
             }
+        }
+    }
+
+    private fun radioGroupOnClickListener() {
+        binding.rgFuudGender.setOnCheckedChangeListener { group, checkedId ->
+            gender = when (checkedId) {
+                R.id.rbFuudMale -> EnumGender.M.toString()
+                R.id.rbFuudFemale -> EnumGender.F.toString()
+                else -> EnumGender.O.toString()
+            }
+        }
+    }
+
+
+    private fun validateUserData(): Boolean {
+        return if (binding.edtFuudUserName.text.isNullOrEmpty()) {
+            binding.edtFuudUserName.error =
+                requireActivity().resources.getString(R.string.error_enter_name)
+            binding.edtFuudUserName.requestFocus()
+            false
+        } else if (binding.edtFuudMobileNo.text.isNullOrEmpty()) {
+            binding.edtFuudUserName.error =
+                requireActivity().resources.getString(R.string.error_enter_mobile_no)
+            binding.edtFuudMobileNo.requestFocus()
+            false
+        } else if (binding.edtFuudEmail.text.isNullOrEmpty()) {
+            binding.edtFuudUserName.error =
+                requireActivity().resources.getString(R.string.error_enter_email_id)
+            binding.edtFuudEmail.requestFocus()
+            false
+        } else {
+            true
         }
     }
 
@@ -90,6 +127,20 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
         binding.edtFuudUserName.setText(userDetailsData.name)
         binding.edtFuudEmail.setText(userDetailsData.email)
         binding.edtFuudMobileNo.setText(userDetailsData.mobile)
+        gender = userDetailsData.gender
+        when (userDetailsData.gender) {
+            EnumGender.M.toString() -> {
+                binding.rgFuudGender.check(R.id.rbFuudMale)
+            }
+
+            EnumGender.F.toString() -> {
+                binding.rgFuudGender.check(R.id.rbFuudFemale)
+            }
+
+            EnumGender.O.toString() -> {
+                binding.rgFuudGender.check(R.id.rbFuudOther)
+            }
+        }
     }
 
     private fun backPressNavigation() {

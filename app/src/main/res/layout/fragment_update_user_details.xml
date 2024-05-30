@@ -17,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        android:visibility="gone"
         android:indeterminateBehavior="cycle"
         android:indeterminateTint="@color/grey"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inclFuudHeader" />
@@ -93,6 +93,47 @@
         android:textSize="@dimen/_13sdp"
         app:layout_constraintTop_toBottomOf="@+id/edtFuudMobileNo" />
 
+    <RadioGroup
+        android:id="@+id/rgFuudGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtFuudEmail">
+
+        <com.task.utils.font.CustomFontRadioButtonRegular
+            android:id="@+id/rbFuudMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:buttonTint="@color/blue"
+            android:layout_weight="0.05"
+            android:text="@string/male" />
+
+        <com.task.utils.font.CustomFontRadioButtonRegular
+            android:id="@+id/rbFuudFemale"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/blue"
+            android:layout_weight="0.05"
+            android:text="@string/female" />
+
+        <com.task.utils.font.CustomFontRadioButtonRegular
+            android:id="@+id/rbFuudOther"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/blue"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_weight="0.05"
+            android:text="@string/other" />
+    </RadioGroup>
+
     <com.task.utils.font.CustomFontButtonBold
         android:id="@+id/btnFuudSubmit"
         android:layout_width="match_parent"
@@ -106,6 +147,6 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_13sdp"
         android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/edtFuudEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/rgFuudGender" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

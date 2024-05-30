@@ -5,5 +5,4 @@ const val CRUD_ID = "77d1c2a2a588488a9282d3fed77fd8c8"  ///development server
 
 const val PREF_PREFERENCES_FILE_NAME = "sciflare_task_pref"
 const val PREF_DEFAULT_COUNTRY_CODE_KEY = "PREF_DEFAULT_COUNTRY_CODE_KEY"
-const val PREF_IS_REGISTER_KEY = "PREF_IS_LOGIN_KEY"
 const val DEFAULT_COUNTRY_CODE = "en"

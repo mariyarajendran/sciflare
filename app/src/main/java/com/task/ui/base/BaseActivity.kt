@@ -10,6 +10,11 @@ import com.task.DEFAULT_COUNTRY_CODE
 import com.task.PREF_DEFAULT_COUNTRY_CODE_KEY
 import com.task.PREF_PREFERENCES_FILE_NAME
 import com.task.data.local.LocalData
+import com.task.data.room.dao.RoomDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.Locale
 import javax.inject.Inject
 
@@ -18,6 +23,9 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun observeViewModel()
     protected abstract fun initViewBinding()
     protected abstract fun init()
+
+    @Inject
+    lateinit var db: RoomDatabase
 
     @Inject
     lateinit var localRepository: LocalData
@@ -64,5 +72,19 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun getCountryCode(context: Context?): String? {
         val sharedPref = context?.getSharedPreferences(PREF_PREFERENCES_FILE_NAME, 0)
         return sharedPref?.getString(PREF_DEFAULT_COUNTRY_CODE_KEY, DEFAULT_COUNTRY_CODE)
+    }
+
+    /**
+     * this function for clear all local room database only
+     * */
+    fun clearLocalRoomDb() {
+        val dao = db.roomDao()
+        CoroutineScope(Dispatchers.Main).launch {
+            runBlocking {
+                dao.deleteUserDetailsData()
+                finishAffinity()
+            }
+
+        }
     }
 }

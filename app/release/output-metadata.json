@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.unknown.android",
+  "applicationId": "com.sciflare.task",
   "variantName": "release",
   "elements": [
     {

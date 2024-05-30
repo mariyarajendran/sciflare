@@ -108,6 +108,18 @@ class UserDetailsFragment : BaseFragment(), View.OnClickListener {
                 }
             }
 
+            is Resource.DataError -> {
+                binding.pbUdfLoader.toGone()
+                binding.tvUdfNoData.toVisible()
+                if (status.errorCode == -1) {
+                    binding.tvUdfNoData.text =
+                        requireActivity().resources.getString(R.string.no_internet)
+                } else {
+                    binding.tvUdfNoData.text =
+                        requireActivity().resources.getString(R.string.server_error)
+                }
+            }
+
             else -> {
                 binding.pbUdfLoader.toGone()
             }
