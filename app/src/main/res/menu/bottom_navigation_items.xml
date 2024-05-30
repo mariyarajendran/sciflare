@@ -5,7 +5,7 @@
         android:icon="@drawable/ic_dashboard"
         android:title="@string/location" />
     <item
-        android:id="@+id/subCategoryFragment"
+        android:id="@+id/userDetailsFragment"
         android:icon="@drawable/ic_video"
         android:title="@string/users" />
     <item

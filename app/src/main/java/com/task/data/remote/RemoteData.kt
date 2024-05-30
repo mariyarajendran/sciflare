@@ -1,6 +1,7 @@
 package com.task.data.remote
 
 import com.task.data.Resource
+import com.task.data.dto.usersdetails.UserDetailsData
 import com.task.data.error.NETWORK_ERROR
 import com.task.data.error.NO_INTERNET_CONNECTION
 import com.task.data.remote.service.UsersService
@@ -21,7 +22,13 @@ constructor(
     override suspend fun fetchUserDetails(): Resource<Any> {
         val usersService = serviceGenerator.createService(UsersService::class.java)
         return when (val response = processCall { usersService.fetchUserDetails() }) {
-            is Any -> {
+            is MutableList<*> -> {
+                @Suppress("UNCHECKED_CAST")
+                (response as? MutableList<UserDetailsData>)?.let {
+                    dao.insertUserDetailsData(
+                        userDetailsData = it
+                    )
+                }
                 Resource.Success(data = response)
             }
 

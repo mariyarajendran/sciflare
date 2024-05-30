@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task.R
 import com.task.data.dto.more.MoreDataResponse
 import com.task.databinding.FragmentMoreBinding
 import com.task.ui.base.BaseFragment
-import com.task.ui.components.activity.HomeActivity
 import com.task.ui.components.fragment.more.adapter.MoreAdapter
 import com.task.utils.EnumMore
 import com.task.utils.SingleEvent
@@ -91,9 +89,7 @@ class MoreFragment : BaseFragment() {
         event.getContentIfNotHandled()?.let { moreDataResponse ->
             when (moreDataResponse.code) {
                 EnumMore.PROFILE.toString() -> {
-                    (activity as HomeActivity).bottomNavigationVisible(isVisible = false)
-                    val action = MoreFragmentDirections.actionMoreFragmentToProfileFragment()
-                    Navigation.findNavController(binding.root).navigate(action)
+
                 }
 
                 EnumMore.LOGOUT.toString() -> {

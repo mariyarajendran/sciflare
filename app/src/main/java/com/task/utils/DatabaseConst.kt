@@ -9,7 +9,7 @@ object DatabaseConst {
     /**
      * Database version
      */
-    const val DATABASE_VERSION = 1
+    const val DATABASE_VERSION = 2
 
     /**
      * UserDetailsData table

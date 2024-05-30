@@ -47,4 +47,6 @@
     <string name="gender">Gender</string>
     <string name="users">Users</string>
     <string name="location">Location</string>
+    <string name="user_details">User Details</string>
+    <string name="user_details_updated_successfully">User details updated successfully</string>
 </resources>
