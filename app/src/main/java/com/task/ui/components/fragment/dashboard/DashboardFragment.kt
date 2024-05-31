@@ -1,13 +1,9 @@
 package com.task.ui.components.fragment.dashboard
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,15 +35,16 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, OnMapReadyCallba
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private val requestLocationPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-            if (isGranted) {
-                enableMyLocation()
-            } /*else {
-                dashboardViewModel.showToastMessage(requireActivity().resources.getString(R.string.location_access_required))
-                redirectToAppSettings()
-            }*/
+
+    private val requestLocationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
+            permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true
+        ) {
+            enableMyLocation()
         }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -92,26 +89,38 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, OnMapReadyCallba
         checkLocationPermission()
     }
 
+
     /**
      *This logic checks for location permission from the user.
      * If permission is granted, it fetches the current location and marks it on the map.
      * */
     private fun checkLocationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
+        val fineLocationPermission = ContextCompat.checkSelfPermission(
+            requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        val coarseLocationPermission = ContextCompat.checkSelfPermission(
+            requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+        if (fineLocationPermission == PackageManager.PERMISSION_GRANTED || coarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
             enableMyLocation()
         } else {
-            requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            requestLocationPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
         }
     }
 
     private fun enableMyLocation() {
-        if (ContextCompat.checkSelfPermission(
-                requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
+        val fineLocationPermission = ContextCompat.checkSelfPermission(
+            requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
+        )
+        val coarseLocationPermission = ContextCompat.checkSelfPermission(
+            requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+        if (fineLocationPermission == PackageManager.PERMISSION_GRANTED || coarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
             if (::mMap.isInitialized) mMap.isMyLocationEnabled = true
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 location?.let {
@@ -128,19 +137,6 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, OnMapReadyCallba
                 }
             }
         }
-    }
-
-    private fun redirectToAppSettings() {
-        val intent = Intent()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-            val uri = Uri.fromParts("package", requireActivity().packageName, null)
-            intent.data = uri
-        } else {
-            intent.action = Settings.ACTION_APPLICATION_SETTINGS
-        }
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        requireActivity().startActivity(intent)
     }
 
     private fun observeToast(event: LiveData<SingleEvent<Any>>) {
