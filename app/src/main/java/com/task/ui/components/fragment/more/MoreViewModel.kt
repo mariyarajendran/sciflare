@@ -22,4 +22,9 @@ class MoreViewModel @Inject constructor() : BaseViewModel() {
         openMorePrivate.value = SingleEvent(moreDataResponse?.get(position))
     }
 
+    @SuppressWarnings("VisibleForTests")
+    override fun showToastMessage(error: String) {
+        showToastPrivate.value = SingleEvent(error)
+    }
+
 }

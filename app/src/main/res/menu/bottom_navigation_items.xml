@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/dashboardFragment"
-        android:icon="@drawable/ic_dashboard"
+        android:icon="@drawable/ic_location"
         android:title="@string/location" />
     <item
-        android:id="@+id/subCategoryFragment"
-        android:icon="@drawable/ic_video"
+        android:id="@+id/userDetailsFragment"
+        android:icon="@drawable/ic_users"
         android:title="@string/users" />
     <item
         android:id="@+id/moreFragment"

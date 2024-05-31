@@ -6,13 +6,14 @@
     android:background="@color/grey_1">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/crdItemHomeDetail"
+        android:id="@+id/crdIud"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_margin="@dimen/_8sdp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_2sdp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/_8sdp"
-        app:cardElevation="@dimen/_8sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardElevation="@dimen/_3sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,117 +24,129 @@
 
 
             <com.task.utils.font.CustomFontTextViewBold
-                android:id="@+id/tvIscUserName"
+                android:id="@+id/tvIudUserName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/user_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintEnd_toStartOf="@id/tvIoDate"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toStartOf="@id/tvIudUserNameData"
+                app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.task.utils.font.CustomFontTextViewRegular
-                android:id="@+id/tvIoDate"
+                android:id="@+id/tvIudUserNameData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:ellipsize="end"
-                android:gravity="start"
-                android:maxLines="1"
-                android:text="28.10.2022"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvIscUserName"
-                app:layout_constraintTop_toTopOf="@+id/tvIscUserName" />
-
-            <com.task.utils.font.CustomFontTextViewBold
-                android:id="@+id/tvIoTextView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/email"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintEnd_toStartOf="@id/tvIoOrderNo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvIscUserName" />
-
-            <com.task.utils.font.CustomFontTextViewRegular
-                android:id="@+id/tvIoOrderNo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:maxLines="1"
-                android:text="1"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvIoTextView2"
-                app:layout_constraintTop_toTopOf="@+id/tvIoTextView2" />
-
-            <com.task.utils.font.CustomFontTextViewBold
-                android:id="@+id/tvIoHintClientNo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/mobile_number"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintEnd_toStartOf="@id/tvIoClientNo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvIoTextView2" />
-
-            <com.task.utils.font.CustomFontTextViewRegular
-                android:id="@+id/tvIoClientNo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:ellipsize="end"
-                android:gravity="start"
+                android:gravity="end"
                 android:maxLines="1"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvIoHintClientNo"
-                app:layout_constraintTop_toTopOf="@+id/tvIoHintClientNo" />
-
+                app:layout_constraintHorizontal_weight="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvIudUserName"
+                app:layout_constraintTop_toTopOf="@+id/tvIudUserName" />
 
             <com.task.utils.font.CustomFontTextViewBold
-                android:id="@+id/tvIoTextView3"
+                android:id="@+id/tvIudEmail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/gender"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/email"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintEnd_toStartOf="@id/tvIoStatus"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toStartOf="@id/tvIudEmailData"
+                app:layout_constraintHorizontal_weight="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvIoHintClientNo" />
+                app:layout_constraintTop_toBottomOf="@id/tvIudUserName" />
 
             <com.task.utils.font.CustomFontTextViewRegular
-                android:id="@+id/tvIoStatus"
+                android:id="@+id/tvIudEmailData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:ellipsize="end"
-                android:gravity="start"
+                android:gravity="end"
                 android:maxLines="1"
-                android:text="Order placed"
+                android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvIoTextView3"
-                app:layout_constraintTop_toTopOf="@+id/tvIoTextView3" />
+                app:layout_constraintHorizontal_weight="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvIudEmail"
+                app:layout_constraintTop_toTopOf="@+id/tvIudEmail" />
+
+            <com.task.utils.font.CustomFontTextViewBold
+                android:id="@+id/tvIudMobileNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/mobile_number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toStartOf="@id/tvIudMobileNoData"
+                app:layout_constraintHorizontal_weight="0.3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvIudEmail" />
+
+            <com.task.utils.font.CustomFontTextViewRegular
+                android:id="@+id/tvIudMobileNoData"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvIudMobileNo"
+                app:layout_constraintTop_toTopOf="@+id/tvIudMobileNo" />
+
+
+            <com.task.utils.font.CustomFontTextViewBold
+                android:id="@+id/tvIudGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/gender"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvIudGenderData"
+                app:layout_constraintHorizontal_weight="0.3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvIudMobileNo" />
+
+            <com.task.utils.font.CustomFontTextViewRegular
+                android:id="@+id/tvIudGenderData"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvIudGender"
+                app:layout_constraintTop_toTopOf="@+id/tvIudGender" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,126 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-platform-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdk 34
+    buildToolsVersion("30.0.3")
+
+    //key store password: Passw0rd@
+    //Alias Name: sciflare_key
+
+    defaultConfig {
+        multiDexEnabled = true
+        applicationId "com.sciflare.task"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "${baseUrl}")
+            buildConfigField("String", "CRUD_ID", "${crudId}")
+        }
+        release {
+            buildConfigField("String", "BASE_URL", "${baseUrl}")
+            buildConfigField("String", "CRUD_ID", "${crudId}")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding = true
+    }
+    namespace 'com.task'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    //lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    //gson
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    // retrofit
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.moshi:moshi:$rootProject.moshiVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshiVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpInterceptorVersion"
+    implementation("com.github.bumptech.glide:glide:$rootProject.glid") {
+        exclude group: "com.android.support"
+    }
+    implementation "androidx.activity:activity-ktx:$rootProject.activityKtxVersion"
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    //nav graph
+    implementation("androidx.navigation:navigation-fragment-ktx:$rootProject.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$rootProject.nav_version")
+    //multidex
+    implementation("androidx.multidex:multidex:$rootProject.multidex_version")
+    //picasso
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    ///android sdp
+    implementation "com.intuit.sdp:sdp-android:$sdpVersion"
+    // room
+    //phoneix
+    implementation 'com.jakewharton:process-phoenix:2.1.2'
+    implementation "androidx.room:room-runtime:$room_ver"
+    implementation "androidx.room:room-ktx:$room_ver"
+    kapt "androidx.room:room-compiler:$room_ver"
+    implementation platform('com.google.firebase:firebase-bom:31.2.3')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoIntentsVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
+    implementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
+}
+kapt {
+    correctErrorTypes true
+}

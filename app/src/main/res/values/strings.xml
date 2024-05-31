@@ -2,6 +2,7 @@
     <string name="app_name">Sciflare Task</string>
     <string name="no_internet">It appears that the app is not connected to the internet. Please check your internet connection.</string>
     <string name="network_error">Network error, could receive data, please try again!</string>
+    <string name="server_error">Server error, could receive data, please try again!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hint_your_name">Your Name</string>
     <string name="hint_date_of_birth">Date of Birth (DD/MM/YYYY)</string>
@@ -47,4 +48,16 @@
     <string name="gender">Gender</string>
     <string name="users">Users</string>
     <string name="location">Location</string>
+    <string name="user_details">User Details</string>
+    <string name="user_details_updated_successfully">User details updated successfully</string>
+    <string name="update_user_details">Update User Details</string>
+    <string name="clear_cache">Clear app cache</string>
+    <string name="data_in_the_cache_has_been_cleared">Data in the cache has been cleared.</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="current_location">Current Location</string>
+    <string name="location_permission_denied">Location permission denied</string>
+    <string name="location_access_required">Location permission access required</string>
+    <string name="google_maps_key" translatable="false">AIzaSyBBaXroof_P9BSanewc-qy4ccsO4JvQCI0</string>
 </resources>

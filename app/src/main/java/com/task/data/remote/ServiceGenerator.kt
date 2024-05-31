@@ -1,16 +1,15 @@
 package com.task.data.remote
 
 import com.squareup.moshi.Moshi
-
-import com.task.data.remote.moshiFactories.MyStandardJsonAdapters
-import com.task.BASE_URL
+import com.task.BuildConfig
 import com.task.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
+import com.task.data.remote.moshiFactories.MyStandardJsonAdapters
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -79,7 +78,7 @@ class ServiceGenerator @Inject constructor() {
             sslContext.socketFactory, trustAllCertificates[0] as X509TrustManager
         )
         val client = okHttpBuilder.build()
-        retrofit = Retrofit.Builder().baseUrl(BASE_URL).client(client)
+        retrofit = Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(client)
             .addConverterFactory(MoshiConverterFactory.create(getMoshi())).build()
     }
 
