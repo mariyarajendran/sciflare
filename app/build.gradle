@@ -30,8 +30,12 @@ android {
 
     buildTypes {
         debug {
+            buildConfigField("String", "BASE_URL", "${baseUrl}")
+            buildConfigField("String", "CRUD_ID", "${crudId}")
         }
         release {
+            buildConfigField("String", "BASE_URL", "${baseUrl}")
+            buildConfigField("String", "CRUD_ID", "${crudId}")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug

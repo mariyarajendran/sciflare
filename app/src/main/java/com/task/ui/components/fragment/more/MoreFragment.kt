@@ -90,6 +90,11 @@ class MoreFragment : BaseFragment() {
         event.getContentIfNotHandled()?.let { moreDataResponse ->
             when (moreDataResponse.code) {
                 EnumMore.CACHE.toString() -> {
+                    /**
+                     * If you clear the cache, the local Room database will be deleted.
+                     * The app will then fetch data from the API and store it in Room again,
+                     * allowing you to easily test the flow as needed.
+                     * */
                     clearRoomDatabaseData()
                 }
 

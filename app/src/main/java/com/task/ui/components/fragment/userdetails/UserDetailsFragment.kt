@@ -92,6 +92,9 @@ class UserDetailsFragment : BaseFragment(), View.OnClickListener {
         viewModelDetail.fetchUserDetailsFromRoom()
     }
 
+    /**
+     * Live data is fetched from the server.
+     * */
     private fun handleFetchUserDetailResult(status: Resource<MutableList<UserDetailsData>>) {
         when (status) {
             is Resource.Loading -> {
@@ -126,6 +129,9 @@ class UserDetailsFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
+    /**
+     * Live data is fetched from the Room DB.
+     * */
     private fun handleFetchUserDetailFromRoomResult(status: Resource<MutableList<UserDetailsData>>) {
         when (status) {
             is Resource.Loading -> {

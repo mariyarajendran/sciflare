@@ -36,6 +36,10 @@ class UserDetailsViewModel @Inject constructor(
     private val openUserDetailPrivate = MutableLiveData<SingleEvent<UserDetailsData?>>()
     val openUserDetail: LiveData<SingleEvent<UserDetailsData?>> get() = openUserDetailPrivate
 
+    /**
+     * Check if the Room database is empty. If it is empty, fetch data from the API and store it in the Room database.
+     * If it is not empty, get the data from the Room database instead of the API.
+     * */
     fun fetchUserDetailsFromRoom() {
         viewModelScope.launch {
             dao.getUserDetailsData().let { data ->
@@ -50,6 +54,9 @@ class UserDetailsViewModel @Inject constructor(
         }
     }
 
+    /**
+     * If the Room database is empty, fetch data from the server API and store it in room db (first time only)
+     * */
     private fun fetchUserDetails() {
         viewModelScope.launch {
             getAllUserDetailsPrivate.value = Resource.Loading()

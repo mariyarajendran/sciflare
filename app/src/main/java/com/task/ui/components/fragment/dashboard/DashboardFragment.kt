@@ -92,6 +92,10 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, OnMapReadyCallba
         checkLocationPermission()
     }
 
+    /**
+     *This logic checks for location permission from the user.
+     * If permission is granted, it fetches the current location and marks it on the map.
+     * */
     private fun checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION
@@ -111,10 +115,14 @@ class DashboardFragment : BaseFragment(), View.OnClickListener, OnMapReadyCallba
             if (::mMap.isInitialized) mMap.isMyLocationEnabled = true
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 location?.let {
+                    /**
+                     * This logic only sets a marker at the current location.
+                     * If you click the marker in the UI, it will show the current latitude and longitude.
+                     * */
                     val currentLatLng = LatLng(it.latitude, it.longitude)
                     mMap.addMarker(
                         MarkerOptions().position(currentLatLng)
-                            .title(requireActivity().resources.getString(R.string.current_location))
+                            .title("${requireActivity().resources.getString(R.string.current_location)}  $currentLatLng")
                     )
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
                 }

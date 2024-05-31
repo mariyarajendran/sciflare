@@ -17,6 +17,7 @@ import com.task.ui.base.BaseFragment
 import com.task.ui.components.activity.HomeActivity
 import com.task.utils.EnumGender
 import com.task.utils.SingleEvent
+import com.task.utils.emailValidator
 import com.task.utils.showToast
 import com.task.utils.toGone
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,6 +82,9 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
                         mobile = binding.edtFuudMobileNo.text.toString(),
                         gender = gender ?: "",
                     )
+                    /**
+                    *  Update the Room database with the data selected from the list.
+                    * */
                     profileViewModel.updateUserDetailData(userDetailsData).apply {
                         profileViewModel.showToastMessage(requireActivity().resources.getString(R.string.user_details_updated_successfully))
                         backPressNavigation()
@@ -101,6 +105,9 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
     }
 
 
+    /**
+     * Validate user details before updating.
+     * */
     private fun validateUserData(): Boolean {
         return if (binding.edtFuudUserName.text.isNullOrEmpty()) {
             binding.edtFuudUserName.error =
@@ -108,16 +115,22 @@ class UpdateUserDetailsFragment : BaseFragment(), View.OnClickListener {
             binding.edtFuudUserName.requestFocus()
             false
         } else if (binding.edtFuudMobileNo.text.isNullOrEmpty()) {
-            binding.edtFuudUserName.error =
+            binding.edtFuudMobileNo.error =
                 requireActivity().resources.getString(R.string.error_enter_mobile_no)
             binding.edtFuudMobileNo.requestFocus()
             false
         } else if (binding.edtFuudEmail.text.isNullOrEmpty()) {
-            binding.edtFuudUserName.error =
+            binding.edtFuudEmail.error =
                 requireActivity().resources.getString(R.string.error_enter_email_id)
             binding.edtFuudEmail.requestFocus()
             false
+        } else if (!emailValidator(binding.edtFuudEmail.text)) {
+            binding.edtFuudEmail.error = returnResString(R.string.error_invalid_email_id)
+            false
         } else {
+            binding.edtFuudUserName.error = null
+            binding.edtFuudMobileNo.error = null
+            binding.edtFuudEmail.error = null
             true
         }
     }
